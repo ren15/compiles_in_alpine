@@ -4,9 +4,24 @@ on: push
 
 
 jobs:
-  zstd_cli:
+  compile_zstd_cli:
     runs-on: ubuntu-22.04
 
+    steps:
+    - uses: actions/checkout@v3
+    - name: check system
+      run: |
+        lscpu
+        free -h
+        df -h 
+        cat /etc/os-release
+
+    - name: zstd_cli
+      run: |
+        bash tasks/compile_zstd_cli/run.sh
+
+  run_glibc_in_alpine:
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
 
@@ -19,4 +34,4 @@ jobs:
 
     - name: zstd_cli
       run: |
-        bash tasks/compile_zstd_cli/run.sh
+        bash tasks/run_glibc_in_alpine/run.sh

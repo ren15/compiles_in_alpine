@@ -16,7 +16,7 @@ jobs:
         df -h 
         cat /etc/os-release
 
-    - name: zstd_cli
+    - name: run
       run: |
         bash tasks/compile_zstd_cli/run.sh
 
@@ -32,6 +32,22 @@ jobs:
         df -h 
         cat /etc/os-release
 
-    - name: zstd_cli
+    - name: run
       run: |
         bash tasks/run_glibc_in_alpine/run.sh
+
+  compile_duckdb:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: check system
+      run: |
+        lscpu
+        free -h
+        df -h 
+        cat /etc/os-release
+
+    - name: run
+      run: |
+        bash tasks/compile_duckdb/run.sh

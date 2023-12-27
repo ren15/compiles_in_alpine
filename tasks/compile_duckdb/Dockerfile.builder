@@ -23,5 +23,5 @@ WORKDIR /v/src
 RUN git clone --depth=1 https://github.com/duckdb/duckdb.git
 
 RUN cd duckdb \
-    && GENERATOR=Ninja make
+    && GENERATOR="-GNinja" make
     

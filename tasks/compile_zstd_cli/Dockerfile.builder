@@ -36,7 +36,9 @@ RUN curl -sSL "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-
     tar --strip-components=1 -xJf - \
     && mv upx /usr/local/bin/upx
 
-RUN ls -lah /v/src/programs/zstd && upx --ultra-brute /v/src/programs/zstd && ls -lah /v/src/programs/zstd
+RUN ls -lah /v/src/programs/zstd && sha256sum /v/src/programs/zstd \
+    && upx --ultra-brute /v/src/programs/zstd \
+    && ls -lah /v/src/programs/zstd && sha256sum /v/src/programs/zstd
 
 FROM centos:7 AS runtime
 

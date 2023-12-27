@@ -26,4 +26,10 @@ RUN cd duckdb \
     && GENERATOR="-GNinja" make
 
 RUN /v/src/duckdb/build/release/duckdb --version
+
+FROM alpine:3.19 AS runtime
+
+COPY --from=build /v/src/duckdb/build/release/duckdb /usr/local/bin/duckdb
+
+ENTRYPOINT ["/usr/local/bin/duckdb"]
     

@@ -24,4 +24,6 @@ RUN git clone --depth=1 https://github.com/duckdb/duckdb.git
 
 RUN cd duckdb \
     && GENERATOR="-GNinja" make
+
+RUN /v/src/duckdb/build/release/duckdb --version
     

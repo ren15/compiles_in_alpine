@@ -26,10 +26,13 @@ RUN cd duckdb \
     && GENERATOR="-GNinja" make
 
 RUN /v/src/duckdb/build/release/duckdb --version
+RUN ldd /v/src/duckdb/build/release/duckdb
 
 FROM alpine:3.19 AS runtime
 
 COPY --from=build /v/src/duckdb/build/release/duckdb /usr/local/bin/duckdb
+COPY --from=build /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
+COPY --from=build /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1
 
 ENTRYPOINT ["/usr/local/bin/duckdb"]
     

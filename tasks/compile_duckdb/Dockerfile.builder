@@ -20,10 +20,9 @@ RUN apk update && \
 WORKDIR /v/src
 
 
-RUN git clone --depth=1 https://github.com/duckdb/duckdb.git
+RUN git clone -b v0.9.2 --depth=1 https://github.com/duckdb/duckdb.git
 
 RUN cd duckdb \
-    && git checkout v0.9.2 \
     && GENERATOR="-GNinja" make
 
 RUN /v/src/duckdb/build/release/duckdb --version

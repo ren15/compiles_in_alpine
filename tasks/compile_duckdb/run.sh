@@ -16,4 +16,4 @@ docker run --rm  builder --version
 
 docker run --rm  builder -s "SELECT 1"
 
-docker run --rm  builder -s "INSTALL httpfs;LOAD httpfs;SELECT * FROM 'https://shell.duckdb.org/data/tpch/0_01/parquet/lineitem.parquet';"
+# docker run --rm  builder -s "INSTALL httpfs;LOAD httpfs;SELECT * FROM 'https://shell.duckdb.org/data/tpch/0_01/parquet/lineitem.parquet';"

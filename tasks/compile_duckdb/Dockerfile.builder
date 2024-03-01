@@ -1,4 +1,5 @@
-FROM alpine:3.19 AS build
+ARG BUILDER
+FROM ${BUILDER} AS build
 
 RUN apk update && \
     apk add \
@@ -21,7 +22,7 @@ RUN apk update && \
 WORKDIR /v/src
 
 
-RUN git clone -b v0.9.2 --depth=1 https://github.com/duckdb/duckdb.git
+RUN git clone -b v0.10.0 --depth=1 https://github.com/duckdb/duckdb.git
 
 RUN cd duckdb \
     && GENERATOR="-GNinja" make

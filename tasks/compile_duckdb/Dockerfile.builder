@@ -23,7 +23,7 @@ RUN apk update && \
 WORKDIR /v/src
 
 
-RUN git clone -b v0.10.0 --depth=1 https://github.com/duckdb/duckdb.git
+RUN git clone -b v0.9.2 --depth=1 https://github.com/duckdb/duckdb.git
 
 RUN cd duckdb \
     && GEN=ninja make

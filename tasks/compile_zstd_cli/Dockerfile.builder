@@ -1,4 +1,5 @@
-FROM alpine:3.19.1 AS build
+ARG BUILDER
+FROM ${BUILDER} AS build
 
 RUN apk update && \
     apk add \

@@ -7,7 +7,8 @@ COPY compile.sh /v/src/
 
 RUN bash /v/src/compile.sh
 
-FROM alpine:3.19 AS runner
+ARG BUILDER
+FROM ${BUILDER} AS runner
 
 COPY --from=builder /tmp/hello /usr/local/bin/hello
 

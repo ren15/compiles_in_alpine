@@ -5,6 +5,7 @@ RUN apk update && \
     apk add \
         build-base \
         cmake \
+        make \
         curl \
         git \
         gcc \
@@ -25,7 +26,7 @@ WORKDIR /v/src
 RUN git clone -b v0.10.0 --depth=1 https://github.com/duckdb/duckdb.git
 
 RUN cd duckdb \
-    && GENERATOR="-GNinja" make
+    && GEN=ninja make
 
 RUN /v/src/duckdb/build/release/duckdb --version
 RUN ldd /v/src/duckdb/build/release/duckdb

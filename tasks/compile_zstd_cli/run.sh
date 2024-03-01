@@ -2,8 +2,7 @@
 
 set -ueo pipefail
 
-pushd $(dirname "$0")
-. ../../common/env.sh
+. common/env.sh
 
 DOCKER_BUILDKIT=1 BUILDKIT_PROGRESS=plain \
 docker build \
